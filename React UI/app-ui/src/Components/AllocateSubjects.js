@@ -33,12 +33,12 @@ function AllocateSubjects() {
   const allocateHandler = (e) => {
 
     if(subjectID===""){
-      alert("You cannot empty subject name");
+      alert("Subject name is required");
       return this;
     }
 
     if(teacherId===""){
-      alert("You cannot empty teacher name");
+      alert("Teacher name is required");
       return this;
     }
     

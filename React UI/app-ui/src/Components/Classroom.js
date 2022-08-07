@@ -17,7 +17,7 @@ function Classroom() {
 
   const clickHandler = (e) =>{
     if(classroomName===""){
-      alert("You cannot empty class room name");
+      alert("Class room name is required");
       return this;
     }
     e.preventDefault();

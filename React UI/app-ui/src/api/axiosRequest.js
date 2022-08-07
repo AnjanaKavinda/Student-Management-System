@@ -204,6 +204,18 @@ const PutTeachers = (data, id) => {
   );
 };
 
+const PutSubjects = (data, id) => {
+  const headers = {
+    "Content-Type": "application/json",
+  };
+  return AxciosRequest(
+    "https://localhost:5001/api/Subjects/" + id,
+    "PUT",
+    headers,
+    data
+  );
+};
+
 //DELETE request
 
 const deleteStudents = (id) => {
@@ -254,6 +266,18 @@ const deleteAllocateSubject = (id) => {
   );
 };
 
+const deleteSubjects = (id) => {
+  const headers = {
+    "Content-Type": "application/json",
+  };
+  return AxciosRequest(
+    "https://localhost:5001/api/Subjects/" + id,
+    "DELETE",
+    headers,
+    {}
+  );
+};
+
 export {
   GetClassroom,
   GetSubjects,
@@ -274,4 +298,6 @@ export {
   PostAllocateSubjects,
   deleteAllocateSubject,
   GetStudentDetails,
+  PutSubjects,
+  deleteSubjects,
 };

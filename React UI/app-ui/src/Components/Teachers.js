@@ -21,23 +21,28 @@ function Teachers() {
    
     if(TeacherFirstName===""){
       
-      alert('cannot empty first name ?');
+      alert('First name is required ');
       return true;
     }
 
     if(TeacherLastName===""){
       
-      alert('cannot empty last name ?');
+      alert('Last name is required ');
       return true;
     }
     if(TeacherContactNo===""){
       
-      alert('cannot empty contact no ?');
+      alert('Contact number is required ');
       return true;
     }
+    else if (TeacherContactNo.length > 10 || TeacherContactNo.length < 10) {
+      alert('Please enter a correct contact number');
+      return true;
+    }
+
     if(TeacherEmail===""){
       
-      alert('cannot empty email ?');
+      alert('Email is required');
       return true;
     }
   }

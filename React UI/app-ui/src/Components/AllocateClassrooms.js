@@ -33,12 +33,12 @@ function AllocateClassrooms() {
     e.preventDefault();
 
     if(classroomID===""){
-      alert("You cannot empty class room name");
+      alert("Classroom name is required");
       return this;
     }
 
     if(teacherId===""){
-      alert("You cannot empty teacher name");
+      alert("Teacher name is required");
       return this;
     }
     

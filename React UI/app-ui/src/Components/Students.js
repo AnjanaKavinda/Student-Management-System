@@ -23,42 +23,42 @@ function Students() {
    
     if(studentFirstName===""){
       
-      alert('cannot empty first name ?');
+      alert('First name is required');
       return true;
     }
 
     if(studentLastName===""){
       
-      alert('cannot empty last name ?');
+      alert('Last name is required');
       return true;
     }
     if(studentContactPerson===""){
       
-      alert('cannot empty contact person ?');
+      alert('Contact person is required');
       return true;
     }
 
     if(studentContactNo===""){
       
-      alert('cannot empty contact no ?');
+      alert('Contact no is required');
       return true;
     }
 
     if(studentAge===""){
       
-      alert('cannot empty age ?');
+      alert('Age is required');
       return true;
     }
 
     if(studentEmail===""){
       
-      alert('cannot empty email ?');
+      alert('Email is required');
       return true;
     }
 
     if(studentDateofbirth===""){
       
-      alert('cannot empty Date of birth ?');
+      alert('Date of birth is required');
       return true;
     }
 
@@ -185,7 +185,7 @@ function Students() {
     });
 
   return (
-    <div div className="body">
+    <div className="body">
       <Form>
         <Form.Group className="firstName">
           <Form.Label htmlFor="firstName">First Name</Form.Label>
