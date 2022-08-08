@@ -6,8 +6,12 @@ import { getStudentDetails } from "../redux/actions/StudentDetailsAction";
 import { getStudents } from "../redux/actions/studentsActions";
 
 function StudentsDetails() {
+
+  const studentData = useSelector((state) => state.allstudents.details);
+  const responseData = useSelector((state) => state.allstudentdetails.details);
+
   const [studentContactPerson, setstudentContactPerson] = useState(" ");
-  const [studentContactNo, setstudentContactNo] = useState(" ");
+  const [studentContactNo, setstudentContactNo] = useState("");
   const [studentEmail, setstudentEmail] = useState(" ");
   const [studentDateofbirth, setstudentDateofbirth] = useState(" ");
   const [studentClassName, setstudentClassName] = useState(" ");
@@ -16,8 +20,7 @@ function StudentsDetails() {
   const dispatch = useDispatch();
   const alldispatch = useDispatch();
 
-  const studentData = useSelector((state) => state.allstudents.details);
-  const responseData = useSelector((state) => state.allstudentdetails.details);
+  
   
   var studentresult =
     studentData &&
@@ -30,41 +33,37 @@ function StudentsDetails() {
     });
 
   const studentClickHandler = async (e) => {
-    console.log("ok");
-    console.log(e);
     setstudentClassId(e);
-    await alldispatch(getStudentDetails(e));
+    alldispatch(getStudentDetails(e));
     
-    if (responseData) {
-      let table = document.querySelector(".tbody");
-      table.innerHTML = "";
-      if (responseData) {
-        setstudentContactPerson(responseData.ContactPerson);
-        setstudentContactNo(responseData.ContactNo);
-        setstudentEmail(responseData.Email);
-        setstudentDateofbirth(responseData.Dateofbirth);
-        setstudentClassName(responseData.ClassroomName);
-
-        //console.log(responseData.allocateSubjects);
-
-        responseData.allocateSubjects &&
-          responseData.allocateSubjects.map((data, index) => {
-            let template = `
-            <tr key={index}>
-              <td>${data.SubjectName}</td>
-              <td>${data.TeacherName}</td>
-            </tr>`;
-            table.innerHTML += template;
-            return "";
-          });
-      }
-    }
   };
 
   useEffect(() => {
     dispatch(getStudents());
   }, [dispatch]);
 
+  useEffect(() => {
+    if (responseData) {
+        setstudentContactPerson(responseData.ContactPerson);
+        setstudentContactNo(responseData.ContactNo);
+        setstudentEmail(responseData.Email);
+        setstudentDateofbirth(responseData.Dateofbirth);
+        setstudentClassName(responseData.ClassroomName);
+
+        let table = document.querySelector(".tbody");
+        table.innerHTML = "";
+        responseData.allocateSubjects &&
+        responseData.allocateSubjects.map((data, index) => {
+          let template = `
+          <tr key={index}>
+            <td>${data.SubjectName}</td>
+            <td>${data.TeacherName}</td>
+          </tr>`;
+          table.innerHTML += template;
+          return "";
+        });
+      }
+  }, [responseData]);
   
 
   return (
